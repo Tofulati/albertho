@@ -1,0 +1,770 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+/** Nav styles **/
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh 2vw;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+nav h1 {
+    color: black;
+    font-weight: normal;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: transparent;
+}
+
+nav li {
+    margin: 5px;
+    position: relative;
+}
+
+nav li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    position: relative;
+}
+
+nav li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transform: translateY(0);
+    transition: bottom transform 0.2s ease, opacity 0.2s ease;
+    opacity: 1;
+}
+
+nav li a.active::after {
+    bottom: 0;
+}
+
+nav li a:hover::after {
+    transform: translateY(4px);
+    opacity: 1;
+}
+
+
+/** Main styles **/
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow: visible
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+}
+
+/** Typewriter styles **/
+.typewriter {
+    font-size: 7rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #111;
+    text-align: center;
+    min-height: 3.5em;
+    line-height: 1.1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    position: relative;
+    white-space: pre;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/** About styles **/
+#about {
+  padding: 4rem 0 2rem 0;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  width: 90vw;
+  height: 100%;
+}
+
+@media (min-width: 700px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+    height: 100%;
+  }
+  .container img {
+    width: 340px;
+    height: 340px;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.15);
+    display: block;
+    margin: 0;
+  }
+  .content {
+    max-width: 500px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+}
+
+.container img {
+  width: 100vw;
+  max-width: 450px;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 600px;
+  text-align: center;
+}
+
+/** Skills styles **/
+#tools-skills {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 4rem 0;
+  scroll-snap-align: start;
+}
+
+.skills-collage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+.skill-card {
+  background: white;
+  border: 1px solid #e5e5e7;
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  min-height: 280px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #111;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background: white;
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 1.5rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.skill-card li {
+  background: #f8f9fa;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.skill-card li:hover {
+  background: #111;
+  color: white;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific styling for the Awards card */
+.skill-card:nth-child(5) {
+  grid-column: span 2;
+  background: white;
+}
+
+.skill-card:nth-child(5) h3 {
+  color: #111;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card:nth-child(5) h3:first-child {
+  margin-bottom: 1rem;
+}
+
+.skill-card:nth-child(5) h3:nth-of-type(2) {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.skill-card:nth-child(5) li {
+  background: #f8f9fa;
+  border-left: 3px solid #111;
+}
+
+.skill-card:nth-child(5) li:hover {
+  background: #111;
+  border-left-color: white;
+}
+
+/* Consistent hover color for all cards */
+.skill-card li:hover { background: #111; }
+
+@media (max-width: 1200px) {
+  .skills-collage {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .skill-card:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .skills-collage {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    padding: 1rem;
+  }
+  
+  .skill-card {
+    padding: 2rem 1.5rem;
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  #tools-skills {
+    padding: 2rem 0;
+  }
+  
+  .skills-collage {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .skill-card {
+    padding: 1.5rem 1.2rem;
+    min-height: 200px;
+    margin: 0 0.5rem;
+  }
+  
+  .skill-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .skill-card li {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/** Project styles **/
+#projects {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2rem;
+  scroll-snap-type: x mandatory;
+  width: 100vw;
+  height: 100%; 
+}
+
+.card-carousel::-webkit-scrollbar {
+  height: 10px;
+}
+.card-carousel::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.apple-card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 600px;
+  perspective: 1200px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  border-radius: 30px;
+  overflow: visible;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.apple-card:hover .card-inner {
+  transform: scale(1.03);
+}
+
+.apple-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.card-front {
+  background-color: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  transform: rotateY(0deg);
+}
+
+.card-front .text h4 {
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.card-front .text h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.mockup {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 2rem;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.card-back {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-back h2 {
+  margin-top: 0;
+}
+
+.btn {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  background: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #ccc;
+}
+
+/** Resume styles **/
+#resume {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.resume-layout img {
+    max-width: 100%;
+    height: auto;
+    max-height: 70vh;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resume-layout aside {
+    max-width: 400px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.resume-layout a {
+    color: #007acc;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.resume-layout a:hover {
+    text-decoration: none;
+}
+
+/** Contact styles **/
+#contact {
+  background: white;
+  min-height: 100vh;
+  padding: 4rem 2rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.contact-box {
+  max-width: 600px;
+  width: 90%;
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e5e5e7;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.contact-box h2 {
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.contact-box h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #111;
+  margin: 1rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.contact-lead {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.contact-box p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.form-item {
+  position: relative;
+}
+
+.form-item input,
+.form-item textarea {
+  width: 100%;
+  padding: 12px 8px;
+  border: none;
+  border-bottom: 2px solid #e5e5e7;
+  background: transparent;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111;
+  box-sizing: border-box;
+}
+
+.form-item input:focus,
+.form-item textarea:focus {
+  border-bottom-color: #111;
+}
+
+.form-item label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.form-item:has(textarea) label {
+  top: 20px;
+  transform: translateY(0);
+}
+
+.form-item input:focus + label,
+.form-item textarea:focus + label,
+.form-item input:not(:placeholder-shown) + label,
+.form-item textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #111;
+  font-weight: 500;
+}
+
+.form-item:has(textarea) input:focus + label,
+.form-item:has(textarea) textarea:focus + label,
+.form-item:has(textarea) input:not(:placeholder-shown) + label,
+.form-item:has(textarea) textarea:not(:placeholder-shown) + label {
+  top: -8px;
+}
+
+.form-button {
+  background-color: #111;
+  color: white;
+  border: none;
+  padding: 14px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.form-button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.form-button:active {
+  background-color: #000;
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove the old contact-button styles since they're not used */
+.contact-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #111;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.contact-button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  #contact {
+    padding: 3rem 1rem 2rem 1rem;
+  }
+  
+  .contact-box {
+    padding: 2rem 1.5rem;
+    width: 95%;
+  }
+  
+  .contact-box h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-lead {
+    font-size: 1.1rem;
+  }
+  
+  .form-item input,
+  .form-item textarea {
+    padding: 10px 6px;
+    font-size: 15px;
+  }
+  
+  .form-item label {
+    font-size: 15px;
+    left: 6px;
+  }
+  
+  .form-button {
+    padding: 12px 0;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-box {
+    padding: 1.5rem 1rem;
+  }
+  
+  .contact-box h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/** Footer styles **/
+footer {
+    text-align: center;
+    margin-top: auto;
+}
