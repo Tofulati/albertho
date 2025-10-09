@@ -101,6 +101,22 @@ section {
     scroll-snap-align: start;
 }
 
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+#typewriter-text {
+  font-size: clamp(4rem, 4vw, 3rem); /* 🔹 Automatically scales */
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 /** Typewriter styles **/
 .typewriter {
     font-size: 7rem;
@@ -763,8 +779,64 @@ section {
   }
 }
 
+.under-construction-section {
+  position: relative;
+}
+
+.under-construction-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(86, 85, 85, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* higher than section content */
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: all;
+  backdrop-filter: blur(2px);
+}
+
+.under-construction-section > *:not(.overlay) {
+  pointer-events: none;
+  user-select: none;
+  filter: blur(2px);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.7); /* semi-transparent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none; /* lets clicks pass through if you want */
+  backdrop-filter: blur(2px);
+}
+
+/* Ensure parent sections are positioned for overlay */
+#projects, #contact {
+  position: relative;
+  overflow: hidden; /* keeps overlay inside */
+}
+
 /** Footer styles **/
 footer {
     text-align: center;
     margin-top: auto;
 }
+
+
