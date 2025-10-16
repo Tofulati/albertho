@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const lines = [
         "Hello, I'm Albert Ho.",
         "Welcome to my page!",
-        "Scroll down to see more."
+        "Explore what I do."
     ];
     let line = 0;
     let i = 0;
@@ -72,4 +72,22 @@ document.querySelectorAll('.apple-card').forEach(card => {
   card.addEventListener('click', () => {
     card.classList.toggle('flipped');
   });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const profileImg = document.querySelector('#about img');
+    const typewriterEl = document.getElementById('typewriter-text');
+    const homeAlt = document.getElementById('home-alt');
+
+    profileImg.addEventListener('click', () => {
+        if (homeAlt.style.display === 'none') {
+            // Hide original typewriter and show alternate content
+            typewriterEl.style.display = 'none';
+            homeAlt.style.display = 'block';
+        } else {
+            // Revert back to original home section
+            homeAlt.style.display = 'none';
+            typewriterEl.style.display = 'block';
+        }
+    });
 });

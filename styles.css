@@ -105,13 +105,23 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 60px); /* subtract nav bar height */
   text-align: center;
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
+  flex-direction: column;
+}
+
+#home-alt {
+  display: flex;       
+  color: black;
+  font-size: 1.5rem;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 #typewriter-text {
-  font-size: clamp(4rem, 4vw, 3rem); /* 🔹 Automatically scales */
+  font-size: clamp(4rem, 4vw, 3rem); 
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -143,6 +153,24 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#profile-pic {
+  cursor: pointer; 
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  filter: brightness(1.1);
+}
+
+#profile-pic:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .container {
