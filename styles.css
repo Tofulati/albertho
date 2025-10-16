@@ -405,10 +405,10 @@ section {
   gap: 2rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 2rem;
+  padding: 2rem 4rem;
   scroll-snap-type: x mandatory;
-  width: 100vw;
-  height: 100%; 
+  width: 100%;
+  height: 100%;
 }
 
 .card-carousel::-webkit-scrollbar {
@@ -417,6 +417,10 @@ section {
 .card-carousel::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
+}
+
+.spacer {
+  flex: 0 0 5rem;
 }
 
 .apple-card {
@@ -480,9 +484,15 @@ section {
 }
 
 .mockup {
+  position: absolute;
+  inset: 0;               
   width: 100%;
-  border-radius: 20px;
-  margin-top: 2rem;
+  height: 100%;
+  object-fit: cover;     
+  border-radius: 30px;  
+  opacity: 0.5;       
+  z-index: -1;      
+  margin: 0;        
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
@@ -500,6 +510,12 @@ section {
 .card-back h2 {
   margin-top: 0;
 }
+
+.card-back li {
+  text-align: left;
+  font-size: 80%;
+}
+
 
 .btn {
   margin-top: 1.5rem;
