@@ -87,7 +87,7 @@
                     <p>
                         I'm always excited to explore new technologies, deepen my understanding of data-driven science, and collaborate on meaningful projects. Feel free to reach out about internship or research opportunities, I’d love to connect!
                     </p>
-                    <p><a href="https://github.com/Tofulati">GitHub</a> &nbsp; | &nbsp; <a href="https://linkedin.com/in/albertho">LinkedIn</a> &nbsp; | &nbsp; <a href="https://open.spotify.com/user/21cyyxrln6pmyazeu3dc2stfi?si=2e8aeab1125c4e5b">Spotify</a></p>
+                    <p><a href="https://github.com/Tofulati" target="_blank">GitHub</a> &nbsp; | &nbsp; <a href="https://linkedin.com/in/albertho" target="_blank">LinkedIn</a> &nbsp; | &nbsp; <a href="https://open.spotify.com/user/21cyyxrln6pmyazeu3dc2stfi?si=2e8aeab1125c4e5b" target="_blank">Spotify</a></p>
                 </div>
             </div>
         </section>
@@ -249,35 +249,57 @@
             </section>
         </section>
 
-        <section id="contact" class="under-construction-section">
-            <div class="overlay">
-                <h1>🚧 Page Under Construction 🚧</h1>
-            </div>
+        <section id="contact">
             <div class="contact-box">
                 <h2>Contact</h2>
-                <p class="contact-lead">Interested in a joint project?</p>
-                <p>Write to me directly or call me – I look forward to exciting ideas!</p>
-                <form class="contact-form" method="POST" action="#contact" id="contactForm">
-                <div class="form-item">
-                    <label for="contact-name">Full Name</label>
-                    <input id="contact-name" name="name" type="text" required>
-                </div>
-                <div class="form-item">
-                    <label for="contact-email">E-Mail</label>
-                    <input id="contact-email" name="email" type="email" required>
-                </div>
-                <div class="form-item">
-                    <label for="contact-subject">Subject</label>
-                    <input id="contact-subject" name="subject" type="text" required>
-                </div>
-                <div class="form-item">
-                    <label for="contact-message">Message</label>
-                    <textarea id="contact-message" name="message" rows="4" required></textarea>
-                </div>
-                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                <button class="form-button" type="submit">Send Message</button>
+                <p>Write to me directly or call me, I look forward to exciting ideas!</p>
+
+                <br>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-item">
+                        <label for="contact-name">Full Name</label>
+                        <input id="contact-name" name="name" type="text" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="contact-email">E-Mail</label>
+                        <input id="contact-email" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Your message" required></textarea>
+                    </div>
+
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
+                    <br>
+                    <button class="contact-button form-button" type="submit">Send Message</button>
                 </form>
             </div>
+            <script type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+            </script>
+            <script type="text/javascript">
+                (function(){
+                    emailjs.init({
+                        publicKey: "IM2LGsNo1BJStRkU3",
+                    });
+                })();
+
+                const form = document.getElementById('contactForm');
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
+
+                    emailjs.sendForm('service_8iobe6h', 'template_g6oa9e9', this)
+                    .then(() => {
+                        alert('Message sent successfully!');
+                        form.reset();
+                    }, (error) => {
+                        alert('Failed to send message: ' + JSON.stringify(error));
+                    });
+                });
+            </script>
         </section>
     </main>
 
